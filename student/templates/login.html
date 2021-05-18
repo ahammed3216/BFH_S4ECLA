@@ -1,5 +1,69 @@
-<form method="POST">
-   {% csrf_token %}
-    {{ form.as_p}}
-    <button type="submit">submit</button>
-</form>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Signup</title>
+    <script src="https://kit.fontawesome.com/4b5e7948e4.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet"> 
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form action="#">
+                <h1>Create Account</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your E-mail for registration</span>
+                <input type="text" placeholder="Name">
+                <input type="email" placeholder="Email">
+                <input type="text" placeholder="Phone number">
+                <input type="password" placeholder="Password">
+                <button>Sign up</button>
+            </form>
+         </div>
+
+        <div class="form-container sign-in-container">
+            <form action="#" method="POST">
+                {% csrf_token %}
+                <h1>Sign in</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your account</span>
+                <input type="text" placeholder="Email" id="username" name="username">
+                <input type="password" placeholder="Password" id="password" name="password">
+                <a href="#">Forgot Your Password?</a>
+                <button type="submit">Sign in</button>
+            </form>
+         </div>
+
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back</h1>
+                    <p>
+                        To keep connected with us, Please login with your personal info
+                    </p>
+                    <button class="ghost" id="SignIn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello Friends!</h1>
+                    <p>
+                        Enter your personal details and start journey with us
+                    </p>
+                    <button class="ghost" id="SignUp">Sign Up</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
