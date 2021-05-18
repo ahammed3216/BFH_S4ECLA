@@ -12,10 +12,13 @@ class UserLoginForm(forms.Form):
         password=self.cleaned_data.get('password')
         if username and password:
             user=authenticate(username=username,password=password)
+            print("authenticated")
             if not user:
                 raise forms.ValidationError("The user does not Exist")
+                print("error 1")
             if not user.check_password(password):
                 raise forms.ValidationError("Password Entered it Is In Incorrect")
+                print("error 2")
             
         return super(UserLoginForm,self).clean(*args,**kwargs)
 
