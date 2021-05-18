@@ -42,7 +42,7 @@ a{
     overflow: hidden;
     width: 768px;
     max-width: 100%;
-    min-height: 480px;
+    min-height: 550px;
 }
 
 .form-container form{
@@ -82,6 +82,7 @@ a{
 button{
     border-radius: 20px;
     border: 1px solid #203ad9;
+    margin-top: 10px;
     background:#203ad9;
     color: #fff;
     font-size: 12px;
