@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model,authenticate
+from phone_field import PhoneField
 
 User=get_user_model()
 
@@ -12,10 +13,13 @@ class UserLoginForm(forms.Form):
         password=self.cleaned_data.get('password')
         if username and password:
             user=authenticate(username=username,password=password)
+            print("authenticated")
             if not user:
                 raise forms.ValidationError("The user does not Exist")
+                print("error 1")
             if not user.check_password(password):
                 raise forms.ValidationError("Password Entered it Is In Incorrect")
+                print("error 2")
             
         return super(UserLoginForm,self).clean(*args,**kwargs)
 
@@ -23,8 +27,8 @@ class UserLoginForm(forms.Form):
 
 class UserRegisterForm(forms.Form):
     username=forms.CharField(widget=forms.TextInput())
-    first_name=forms.CharField(widget=forms.TextInput())
-    last_name=forms.CharField(widget=forms.TextInput())
+    firstname=forms.CharField(widget=forms.TextInput())
+    lastname=forms.CharField(widget=forms.TextInput())
     email=forms.EmailField(widget=forms.TextInput())
     password1=forms.CharField(widget=forms.PasswordInput())
     password2=forms.CharField(widget=forms.PasswordInput())
@@ -51,5 +55,23 @@ class UserRegisterForm(forms.Form):
         if qs.exists():
             raise forms.ValidationError("EMAIL EXISTS")
         return email
+
+class EventRegistration(forms.Form):
+    title=forms.CharField(widget=forms.TextInput())
+    event_description=forms.CharField(widget=forms.TextInput())
+    total_seats=forms.IntegerField()
+    event_time=forms.TimeField()
+    event_date = forms.DateField()
+    event_venue=forms.CharField(widget=forms.TextInput())
+    contact_number=PhoneField(blank=True,null=True)
+    contact_email=forms.EmailField()
+    
+    event_head=forms.CharField(widget=forms.TextInput())
+    event_hosted_by=forms.CharField(widget=forms.TextInput())
+
+    def clean(self):
+     
+        print(self.cleaned_data)
+        print(self.is_valid())
 
 

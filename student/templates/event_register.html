@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Create Event</title>
+    <link rel="stylesheet" href= "{% static 'css/event_register.css' %}">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="container">
+    <div class="title">Create an Event Here</div>
+    <div class="content">
+      <form method="POST">
+        {% csrf_token %}
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Event Name</span>
+            <input type="text" placeholder="ENTER THE NAME OF THE EVENT" id="title" name="title" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Event Date</span>
+            <input type="date" placeholder="ENTER THE DATE OF THE EVENT" id="event_date" name="event_date" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Event Time(Starting Time)</span>
+            <input type="time" placeholder="ENTER THE TIME OF THE EVENT" id="event_time" name="event_time" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Event Venue:</span>
+            <input type="text" placeholder="College Auditorium" id="event_venue" name="event_venue" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Event Head(Name)</span>
+            <input type="text" placeholder="John Doe" id="event_head" name="event_head" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="text" placeholder="example@mail.com" id="contact_email" name="contact_email" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Contact Info</span>
+            <input type="tel" placeholder="012-345-6789" id="contact_number" name="contact_number" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Max Participants:</span>
+            <input type="number" placeholder="00" id="total_seats" name="total_seats" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Event Hosted By:</span>
+            <input type="text" placeholder="EVENT HOSTED BY" id="event_hosted_by" name="event_hosted_by" required>
+          </div>
+         <!--  <div class="input-box">
+            <span class="details">Upload Event Poster:</span>
+            <input type="file" id="event_image" name="event_image" required>
+          </div>
+        </div> -->
+        <div class="input-box">
+          <span class="details">Event Description</span>
+          <textarea  placeholder="SAY ABOUT THE EVENT" id="event_description" name="event_description" cols="35" rows="5" required></textarea>
+        </div>
+       
+        <div class="button">
+          <div class="button">
+            <input type="submit" value="Create">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

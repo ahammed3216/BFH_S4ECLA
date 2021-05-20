@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'student'
+    'student',
+    'phone_field'
 ]
 
 MIDDLEWARE = [
@@ -55,7 +56,7 @@ ROOT_URLCONF = 'event.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+         'DIRS': [os.path.join(BASE_DIR,"templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -69,6 +70,9 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'event.wsgi.application'
+
+STATIC_URL = '/static/'
+STATIC_ROOT=os.path.join(BASE_DIR, 'static_root')
 
 
 # Database
@@ -119,3 +123,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+  os.path.join(BASE_DIR, 'static'),
+)
+
+STATIC_URL = '/static/'
+STATIC_ROOT=os.path.join(BASE_DIR, 'static_root')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
+MEDIA_URL = '/media/'
+
