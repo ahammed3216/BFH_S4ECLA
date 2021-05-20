@@ -1,3 +1,4 @@
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -5,20 +6,21 @@
     <title>Sign Up</title>
     <script src="https://kit.fontawesome.com/4b5e7948e4.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet"> 
-    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <div class="container" id="container">
         <div class="form-container ">
-            <form action="#">
+            <form action="#" method="POST">
+                {% csrf_token %}
                 <h1>Create Account</h1>
-                <input type="text" placeholder="First Name">
-                <input type="text" placeholder="Last Name">
-                <input type="email" placeholder="Email">
-                <input type="text" placeholder="Phone number">
-                <input type="password" placeholder="Password">
-                <input type="password" placeholder="Confirm Password">
-                <button>Sign up</button>
+                <input type="text" placeholder="username" id ="username" name="username">
+                <input type="text" placeholder="First Name" id="firstname" name="firstname">
+                <input type="text" placeholder="Last Name" id="lastname" name="lastname">
+                <input type="email" placeholder="Email" id="email" name="email"> 
+                <input type="password" placeholder="Password" id="password1" name="password1">
+                <input type="password" placeholder="Confirm Password" id="password2" name="password2">
+                <button type="submit">Sign up</button>
             </form>
          </div>
          <div class="overlay-container">
@@ -28,7 +30,9 @@
             <p>
                 To keep connected with us, Please login with your personal info
             </p>
-            <button class="ghost" id="SignIn" onclick="location.href='./login.html'">Sign In</button>
+            <a href="http://127.0.0.1:8000/login/">
+            <button class="ghost" id="SignIn" >Sign In</button>
+            </a>
         </div>
     </div>
     </div>
