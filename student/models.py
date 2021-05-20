@@ -17,6 +17,7 @@ class EventModel(models.Model):
     contact_number=PhoneField(blank=True,null=True)
     event_hosted_by=models.CharField(max_length=30,blank=True,null=True)
     event_image=models.ImageField()
+    approve_admin=models.BooleanField(default=True)
 
   
 

@@ -142,3 +142,26 @@ def add_to_cart(request,id):
         messages.info(request,"Event has sucessfully added to your profile")
         return redirect ('/')
 
+
+def remove_from_cart(request,id):
+    event=get_object_or_404(EventModel,id=id)
+    orderitem_qs=OrderEvent.objects.filter(user=request.user,events=event,booked=False)
+    if orderitem_qs.exists():
+        messages.info(request,"Event is already is not in your your profile")
+        return redirect('/')
+    else:
+        orderitem=OrderEvent(
+            user=request.user,
+            events=event,
+            booked=False
+
+        )
+        orderitem.save()
+
+
+        
+        
+        
+        messages.info(request,"Event has sucessfully removed from your profile")
+        return redirect ('/')
+
