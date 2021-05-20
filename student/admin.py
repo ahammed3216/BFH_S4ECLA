@@ -6,3 +6,4 @@ admin.site.register(EventModel)
 admin.site.register(OrderEvent)
 admin.site.register(Order)
 admin.site.register(Profile)
+
