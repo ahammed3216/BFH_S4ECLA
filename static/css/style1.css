@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+}
+
+.showcase{
+    position: relative;
+    right: 0;
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #111;
+    color: #fff;
+    z-index:2;
+}
+.alert{
+   width: 25%;
+   float: right;
+   margin-top: -80px;
+   padding: 20px;
+   background-color: #f44336;
+   opacity: .9;
+   color: white;
+ }
+ 
+ .closebtn{
+   margin-left: 15px;
+   color: white;
+   font-weight: bold;
+   float: right;
+   font-size: 22px;
+   line-height: 20px;
+   cursor: pointer;
+   transition: 0.3s;
+ }
+
+.closebtn:hover{
+  color: black;
+}
+.circle{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #300842;
+    opacity: .9;
+    clip-path: circle(70% at right -30%);
+   
+}
+
+.showcase header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+   
+}
+.dock{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.slidedown{
+   display: flex;
+   align-items: center;
+}
+.rocket img{
+   width: 100px;
+   margin-right: 30px;
+}
+
+.rocket{
+   position: relative;
+   animation: animate 0.2s ease infinite;
+
+}
+@keyframes animate{
+
+   0%,100%{
+      transform: translateY(-2px);
+
+   }
+   50%{
+      transform: translateY(2px);
+      
+   }
+}
+.rocket::before
+{
+   content: '';
+   position: absolute;
+   bottom: -200px;
+   left: 38.8%;
+   transform: translateX(-39%);
+   width: 10px;
+   height: 200px;
+   background: linear-gradient(#00d0ff,transparent);
+
+}
+.rocket::after
+{
+   content: '';
+   position: absolute;
+   bottom: -200px;
+   left: 39%;
+   transform: translateX(-39%);
+   width: 10px;
+   height: 200px;
+   background: linear-gradient(#00d0ff,transparent);
+   filter: blur(20px);
+
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+}
+ul{
+    list-style: none;
+    display: flex;
+}
+li{
+    padding: 20px;
+
+}
+a{
+    color: #fff;
+    text-decoration: none;
+}
+#logo{
+    position: relative;
+    margin-bottom: 10px;
+    width: 150px;
+    height: 150px;
+   }
+
+.showcase video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index:-2;
+    opacity: 0.8;
+}
+
+h1{
+   font-size:45px;
+   font-style: italic;
+   color: rgb(211, 64, 211);
+}
+
+.text{
+    width: 75%;
+    position: relative;
+    margin-top: 50px;
+    padding-left: 70px;
+
+}
+
+.text h2{
+    font-size:50px;
+    font-weight: bolder;
+}
+
+.text h3{
+    font-size:25px;
+    font-weight: bolder;
+}
+.text p{
+    font-size:1.1em;
+    font-weight: 400;
+    max-width: 800px;
+}
+
+.text a{
+    display: inline-block;
+    font-size: 1em;
+    background: #fff;
+    color: black;
+    padding: 8px 20px;
+    margin-top: 10px;
+    letter-spacing: 2px;
+    transition: .4s;
+}
+.text a:hover
+{
+    letter-spacing: 6px;
+}
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background: rgb(23, 73, 138);
+    mix-blend-mode: overlay;
+}
+
+.box{
+
+    position: relative;
+    right: 0;
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+    background-image: url('../img/bgm.jpg') ;
+    background-size: contain;
+    background-color:#350535 ;
+    opacity: .9;
+    color: #fff;
+   
+    }
+    /*SLIDE CSS STARTS HERE*/
+    .carousel-inner > .item > img,
+    .carousel-inner > .item > a > img {
+      width: 70%;
+      margin: auto;
+    }
+
+    .item h3{
+      position: relative;
+      margin-bottom: 100px;
+      font-size: 50px;
+    }
+ 
+    .item p{
+      position: relative;
+      margin-bottom:120px ;
+      font-size: 20px;
+    }
