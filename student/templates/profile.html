@@ -1,0 +1,54 @@
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+  <title>My Profile</title>
+</head>
+<body>
+  <h1 class="first">Astronomy Club</h1>
+  <nav class="nav_bar">
+    <ul class="nav">
+      <li class="nav1"><a href="/home">Home</a></li>
+      
+      {% if user.is_authenticated %}
+      <li class="nav1"><a href="/profile">Profile</a></li>
+      <li class="nav1"><a href="/logout">logout</a></li>
+      {% else %}
+      <li class="nav1"><a href="/register">Sign Up</a></li>
+      <li class="nav1"><a href="/login">Login</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+
+  <div class="hl"></div>
+  <h1 class="heading">My Profile</h1>
+  <section>
+  <img src="{% static 'img/login_pic.png' %}" alt="Login" width="200px" height="200px" class="img">
+  <div class="vl"></div>
+  <hr>
+    
+     <ul class="credentials">
+        <li class="cr">NAME: <p>{{ man.first_name }} {{ man.last_name }}</p></li>
+        <li class="cr">E-Mail: <p>{{ man.email }}</p></li>
+        <li class="cr">Username: <p>{{ man.username }}</p></li>
+      </ul>
+      <h2>Want to Create An Event? Click below</h2>
+      <a href="/event_register"><input type="button" value="Create An Event" class="button"></a>
+  </section>
+  <section class="list">
+    <table>
+      <tr><th>Events You've Registered For:</th></tr>
+      {% for item in items %}
+      <tr><td>{{ item.events.title }}</td></tr>
+      {% endfor %}
+      
+    </table>
+  </section>
+  <footer>
+    <h1>&copy;Astronomy Club 2021</h1>
+  </footer>
+</body>
+</html>

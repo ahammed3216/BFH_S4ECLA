@@ -1,0 +1,76 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/event.css' %}">
+    <title>Event Details</title>
+</head>
+<body >
+
+    <h1 class="first">Astronomy Club</h1>
+    <nav class="nav_bar">
+      <ul class="nav">
+        <li class="nav1"><a href="/profile">Profile</a></li>
+        <li class="nav1"><a href="/register">Sign Up</a></li>
+        <li class="nav1"><a href="/home">Home</a></li>
+      </ul>
+    </nav>
+  
+
+    <h1><u><i>Event Description</i></u></h1>
+    
+    <div class="button">
+        {% if event.available_seats > 0 %}
+        <a href="{{ event.get_add_to_cart_url }}"><input type="submit" value="Add Me as A Participant"></a>
+        <a href="{{ event.get_remove_from_cart_url }}"><input type="submit" value="Remove Me" class="button_2"></a>
+        {% else %}
+        <input type="submit" value="HOUSE FUL !!!" class="button_2"></a>
+        {% endif %}
+    </div>
+
+    <div class="image">
+        <img src="{{ event.event_image.url }}" alt="Picture"  width="650px" height="300px">
+    </div>
+    <h2>Want to be the Part of the Event,Press below</h2>
+            <div class="details">
+                <ul id="list1">
+                    {% if event.available_seats > 0 %}
+                    <li>Available Seats: <p> {{ event.available_seats }} </p></li>
+                    {% else %}
+                    <li>Available Seats: <p>No Seats Available </p></li>
+                    {% endif %}
+                    <li>Event Date: <p> {{ event.event_date }} </p></li>
+                    <li>Event Starting at: <p> {{ event.event_time }} </p></li>
+                    <li>Event Venue: <p> {{ event.event_venue }}</p></li>
+                    <li>Event Head: <p>  {{ event.event_head }} </p></li>
+                </ul>
+                <ul id="list2">
+                    <li>Event Host: <p>  {{ event.event_hosted_by }} </p></li>
+                    <li>Max. Participants: <p> {{ event.total_seats }} </p></li>
+                    <li>Contact number: <p>{{ event.contact_number }} </p></li>
+                    <li>E Mail: <p> {{ event.contact_email }} </p></li>
+                </ul>
+                <ul id="list3">
+                    <li><u>Event Description:</u><p>{{ event.event_description }}</p><</li>
+                </ul>
+            </div>
+            <div class="list">
+                <table>
+                    <tr><th>Names of the Attendess:</th>
+                    <th>Email</th></tr>
+                    {% for user in items %}
+                    <tr><td>{{ user.user.first_name }} {{user.user.last_name }}</td>
+                    <td>{{ user.user.email }}</td></tr>
+                    {% endfor %}
+                    
+                </table>
+            </div>
+
+            <footer>
+                <h3>&copy;Astronomy Club 2021</h3>
+            </footer>
+            
+</body>
+</html>
