@@ -26,9 +26,9 @@ class UserLoginForm(forms.Form):
 
 
 class UserRegisterForm(forms.Form):
-    username=forms.CharField(widget=forms.TextInput())
-    firstname=forms.CharField(widget=forms.TextInput())
-    lastname=forms.CharField(widget=forms.TextInput())
+    username=forms.CharField(widget=forms.TextInput(),required=True)
+    firstname=forms.CharField(widget=forms.TextInput(),required=True)
+    lastname=forms.CharField(widget=forms.TextInput(),required=True)
     email=forms.EmailField(widget=forms.TextInput())
     password1=forms.CharField(widget=forms.PasswordInput())
     password2=forms.CharField(widget=forms.PasswordInput())
@@ -40,6 +40,7 @@ class UserRegisterForm(forms.Form):
         password2=self.cleaned_data.get('password2')
         if (password1 != password2):
             raise forms.ValidationError("PASSWIRD DOES NOT MATCH")
+            print(1)
         return cleaned_data
 
     def clean_username(self):
@@ -47,6 +48,7 @@ class UserRegisterForm(forms.Form):
         qs=User.objects.filter(username=username)
         if qs.exists():
             raise forms.ValidationError("USERBANE EXISTS FOR ANOTHER ACCOUNT")
+            print(1)
         return username
 
     def clean_email(self):
@@ -54,6 +56,7 @@ class UserRegisterForm(forms.Form):
         qs=User.objects.filter(email=email)
         if qs.exists():
             raise forms.ValidationError("EMAIL EXISTS")
+            print(1)
         return email
 
 class EventRegistration(forms.Form):
@@ -74,4 +77,7 @@ class EventRegistration(forms.Form):
         print(self.cleaned_data)
         print(self.is_valid())
 
+
+class img_test_form(forms.Form):
+    img=forms.ImageField()
 

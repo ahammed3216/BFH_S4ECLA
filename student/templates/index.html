@@ -1,0 +1,116 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+</head>
+<body>
+    <section class="showcase">
+        <div class="circle"></div>
+    <header>
+        <nav>
+            <img id="logo" src="../../static/img/cosmo_gangs-removebg-preview.png" alt="logo">
+            <ul>
+            <li><a href="/homr">Home</a></li>
+            <li><a href="#box">Whats Happening?</a></li>
+            
+            {% if user.is_authenticated %}
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/logout">Logout</a></li>
+            {% else %}
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">SignUp</a></li>
+            {% endif %}
+           </ul>
+      </nav>
+      {% if form.erros %}
+          {% for error in form.non_field_errors %}
+              <div class="alert alert-danger">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                  <strong>{{ error|escape }}</strong>
+              </div>
+          {% endfor %}
+      {% elif messages %}
+          {% for message in messages %}
+          <div class="alert alert-danger">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+              <strong>{{ message }}</strong>
+          </div>
+          {% endfor %}
+      {% endif %}
+      
+      <div class="dock">
+      <div class="text">
+        <h2>Sky Isn't the Limit !</h2>
+        <h3>Welcome to the astronomy club</h3><br>
+        <p>This is the all in one place for our astronomy club. <br>
+            All Events of our club will be informed here.
+            Hooray.. Lets explore
+        </p>
+        <a href="#">EXPLORE</a>
+       </div>
+       <div class="slidedown">
+           <div class="note">
+           <h2>Whats happening on Earth? </h2>
+           <a href="#box"><h4>Scroll Down to see!</h4></a>
+          </div>
+          <div class="rocket">
+              <img src="../../static/img/rocket.png" alt="">
+
+          </div>
+       </div>
+    </div>
+       <video autoplay muted loop src="{% static 'videose/Untitled_1440p.mp4' %}"></video> 
+        <div class="overlay"></div>
+        </section>
+        <section class=" box" id="box">
+          <!--SLIDER CODE STARS HERE-->
+          <div class="container">
+            <br>
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+              <!-- Indicators -->
+              <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
+              </ol>
+          
+              <!-- Wrapper for slides -->
+              <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+              {% for event in items %}
+              {% if forloop.counter == 1 %}
+              <div class="item active">
+              {% else %}
+              <div class="item">
+              {% endif %}
+                  <a href="{{ event.get_event_model_url }}"><img src="{{ event.event_image.url }}" alt="Image" width="460" height="345"></a>
+            <div class="carousel-caption">
+              <h3>{{ event.title }}</h3>
+              <p>{{ event.Event_time }}</p>
+            </div>
+              </div>
+              {% endfor %}
+              </div>
+
+              <!-- Left and right controls -->
+              <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+              </a>
+              <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+              </a>
+            </div>
+          </div>
+    </section>    
+  </header>
+</body>
+</html>

@@ -18,8 +18,11 @@ class EventModel(models.Model):
     event_hosted_by=models.CharField(max_length=30,blank=True,null=True)
     event_image=models.ImageField()
     approve_admin=models.BooleanField(default=True)
+    
 
-  
+
+
+
 
     def get_event_model_url(self):
         return reverse("model-define", kwargs={"id": self.id})
@@ -63,3 +66,8 @@ class EventRegistartion(models.Model):
     event_hosted_by=models.CharField(max_length=30,blank=True,null=True)
     total_seats=models.IntegerField()
     event_description=models.TextField(default="this is")
+
+class img_test(models.Model):
+    img=models.ImageField()
+
+
