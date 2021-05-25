@@ -9,13 +9,13 @@ We have created an Event management portal for an astronomy club â€œCosmo Gangsâ
 ## Team Id
 BFH/rechseeXzPpBMEItm/2021
 ## Link to product walkthrough
-[link to video]
+[product walkthrough]()
 ## How it Works ?
-1. Explaining the working of project
-2. Embed video of project demo
+1. We have developed the website front end using HTML and CSS and all the backend process is done with Django. The user can use all the functionalities of the site after signing up. In the login page all upcoming event will be listed. User can click and navigate to each event and can see all the details about the event and he can also register for the event. In the profile page he can see all the registered event and he also can add new events by filling the create event form. Events are added once the admin approves it.  Admin can manage and edit all event activities
+3. [video of project demo]()
 ## Libraries used
-Library Name - Version
+
 ## How to configure
-Instructions for setting up project
+Visit our [site here]()sign up to register and add avents
 ## How to Run
-Instructions for running
+You can reach our website from [here]()
